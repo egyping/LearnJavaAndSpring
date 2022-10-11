@@ -43,17 +43,121 @@ public class Main {
         // [10, 20, 30]
 
         // Create arrays with curly bracket easier short
-        int [] numCurly = {10 , 20, 30};
+        int [] numCurly = {10 , 20, 30, 40, 50, 60};
         System.out.println(Arrays.toString(numCurly));
         // [10, 20, 30]
 
         // Curly string
-        String [] stringCurly = {"Fahd" , "Yassin", "Yomna" };
+        String [] stringCurly = {"Fahd" , "Yassin", "Yomna", "Sara" };
         System.out.println(Arrays.toString(stringCurly));
         System.out.println(stringCurly.length);
         // length is array property
         // [Fahd, Yassin, Yomna]
         // 3
+
+        // Nesting
+        int lastNum = numCurly[5];
+        System.out.println(lastNum);
+        // 60
+
+        // Get the last index
+        int lastNumLength = numCurly[numCurly.length -1];
+        System.out.println(lastNumLength);
+        // 60 and -2 for the last before last -3 ...etc.
+
+
+        // ++ and -- what they are
+        int number = 0;
+        number++;
+        System.out.println(number);
+        // 1 so ++ to add 1 and -- to minus 1
+
+        // another way for addition and minus
+        int minus = 10;
+        minus -= 6;
+        System.out.println(minus);
+        // 4 and same for +
+
+        // Better for loop == enhanced for loops
+        // loop the arrays values and put it in x then print it one by one
+        for (int x : numCurly){
+            System.out.println(x);
+        }
+        // 10 20 30 40 50 60
+
+        // above is the enhanced version of the following
+        // (initial value ; comdition ; action after every loop)
+        for (int i = 0; i < numCurly.length; i++){
+            System.out.println(numCurly[i]);
+        }
+        // 10 20 30 40 50 60
+
+        // Break and continue within the loop
+            for (String s : stringCurly) {
+                System.out.println(s);
+            }
+            // Fahd
+            // Yassin
+            // Yomna
+            // Sara
+
+            for (String s : stringCurly) {
+                System.out.println(s);
+                break;
+            }
+            // Fahd
+
+            for (String s : stringCurly) {
+                if (s.equals("Yomna")){
+                    break;
+                }
+                System.out.println(s);
+            }
+            // Fahd
+            // Yassin
+
+            // continue simply bypass the next line the action
+            for (String s : stringCurly) {
+                if (s.startsWith("Y")){
+                    continue;
+                }
+                System.out.println(s);
+            }
+            // Fahd
+            // Sara the continue bypassed Yomna and Yassin
+
+
+        // while and do while loops
+            // while something do the following(s)
+            int whileSample = 5;
+    //            while (whileSample < 6){
+    //                System.out.println(whileSample);
+    //            }
+            // this is infinite since 5 always less than 6
+            while (whileSample < 10){
+                System.out.println(whileSample);
+                whileSample++;
+            }
+            // 5 6 7 8 9
+            // Do while is do the action at least once then execute the condition
+            int doSample = 10;
+            do {
+                System.out.println(doSample);
+                doSample++;
+            }
+            while (doSample < 10);
+            // 10 and stop
+
+        // scanner class to take user input from the console
+
+
+
+
+
+
+
+
+
 
 
     }
