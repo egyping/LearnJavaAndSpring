@@ -1,8 +1,32 @@
 package org.amigoscode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InterviewNotes {
+    
+    // static keyword: means the methods\class is shared across all the objects created from the method\class
+    // static target class\method\variable the targeted is shared among the entire class
+    // static variable you can call it anywhere within the class
+    public static final String staticVar = "static var";
+    // you can also group the static of the class together
+    public static String BRAND;
+    static List list;
+    static {
+        BRAND = "static variable";
+        list = new ArrayList();
+        list.add("d");
+    }
+
     public static void main(String[] args) {
 
+        // Integer vs int "for primitive we have object equivilnt
+        // Integer int - double Double - long Long
+        // var is primitive
+        int number = 9;
+        // number. will not call any methods belong to Integer
+        Integer numberInteger = 9;
+        // integerNumber. will call a lot of methods belong to Integer class a lot of math methods
 
 
         // Ternary operator possible only in one case
