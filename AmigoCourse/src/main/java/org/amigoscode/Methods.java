@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Methods {
 
     public static void main(String[] args) {
+        // Classes is the template and Object is the real thing created from that template so variables are objects created from classes
         // Methods is logic
         // logic to call and respond and logic you call to help in doing something
 

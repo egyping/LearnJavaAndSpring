@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        // Ternary operator possible onlyin one case
+        // Ternary operator possible only in one case
         int age = 25;
         String messageAdul = age >= 18 ? "Ternary operator: I am an Adult" : " I am not adult";
         System.out.println(messageAdul);

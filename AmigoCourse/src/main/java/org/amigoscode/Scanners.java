@@ -17,7 +17,8 @@ public class Scanners {
         //  Helloo Fahd -- from sout
 
         System.out.println("What is your age?");
-        int age = scanner.nextInt();
+        // final means we cannot overwrite later on 
+        final int age = scanner.nextInt();
         int birthYear = LocalDate.now().getYear() - age;
         System.out.println(birthYear);
 
