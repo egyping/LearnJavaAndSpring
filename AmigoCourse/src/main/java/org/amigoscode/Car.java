@@ -7,7 +7,8 @@ package org.amigoscode;
 // which access the skeleton
 public class Car {
 
-    // You start with the model variable of the class
+    // You start with the model property of the class
+    // These variables called the class properties
     private String color;
     private int make;
     private boolean sedan;
