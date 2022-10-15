@@ -94,9 +94,34 @@ public class ArraysinAction {
 
 
         // Maps
-        // key value pair {}
-
-
+        // usefull for key value pair {}
+        Map<Integer, String> map1 = new HashMap<>();
+        map1.put(0, "Fahd");
+        map1.put(1, "Yassin");
+        map1.put(2, "Sara");
+        map1.put(2, "Yomna ");
+        // we added duplicate at 2
+        System.out.println(map1);
+        // {0=Fahd, 1=Yassin, 2=Yomna }
+        // replaced Sara by Yomna
+        System.out.println(map1.get(0));
+        // Fahd
+        System.out.println(map1.keySet());
+        // [0, 1, 2]
+        // loop
+        for (int x : map1.keySet() ){
+            System.out.println(map1.get(x));
+        }
+//        Fahd
+//        Yassin
+//        Yomna
+        // another loop
+        map1.forEach((k,v) -> {
+            System.out.println(k + " " + v);
+                });
+//        0 Fahd
+//        1 Yassin
+//        2 Yomna
 
     }
 }
