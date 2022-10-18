@@ -1,8 +1,9 @@
 package org.amigoscode;
 
 import java.util.Random;
+import java.util.function.IntBinaryOperator;
 
-public class LambdasAndStreams {
+public class LambdasInAction {
     public static void main(String[] args) {
 
         // Lambdas and streams ==> Linkedin
@@ -50,6 +51,21 @@ public class LambdasAndStreams {
             // java has pre made interfaces ready to use to save your time
             // java.util.function https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html
             // this package came to help in writing lambdas since lambdas is headless, lambda came to write the logic
+            // so basically we need function takes two int and return int
+            // https://docs.oracle.com/javase/8/docs/api/java/util/function/IntBinaryOperator.html
+            // Interface IntBinaryOperator Represents an operation upon two int-valued operands and producing an int-valued result
+            IntBinaryOperator numberRandom1 = (int x, int y) -> {
+                Random random = new Random();
+                int randomNum = random.nextInt(40);
+                return x * y + randomNum;
+            };
+            System.out.println(numberRandom1.applyAsInt(4, 5));
+            // 46 so we used interface ready made in the jdk and we used the lambda to directly write the business
+            // no need for LambdasCalculatorINT and LambdasGreetingClass
+
+             // challenge
+
+
 
 
     }
