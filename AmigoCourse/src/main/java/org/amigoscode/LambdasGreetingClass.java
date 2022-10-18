@@ -1,6 +1,6 @@
 package org.amigoscode;
 
-public class LambdasGreetingClass implements LambdasGreeting{
+public class LambdasGreetingClass implements LambdasGreetingInt {
 
     @Override
     public void sayHello() {
