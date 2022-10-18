@@ -17,6 +17,6 @@ public class ExceptionInAction {
         }
         // Error the value is nulljava.lang.NullPointerException: Cannot invoke "String.length()" because "name1" is null
 
-
     }
+    
 }
