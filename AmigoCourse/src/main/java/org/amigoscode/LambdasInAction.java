@@ -63,10 +63,6 @@ public class LambdasInAction {
             // 46 so we used interface ready made in the jdk and we used the lambda to directly write the business
             // no need for LambdasCalculatorINT and LambdasGreetingClass
 
-             // challenge
-
-
-
 
     }
 }
