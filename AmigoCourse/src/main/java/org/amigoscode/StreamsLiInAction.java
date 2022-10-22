@@ -3,6 +3,7 @@ package org.amigoscode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.System.*;
@@ -27,12 +28,11 @@ public class StreamsLiInAction {
         shoppingList.add("lemon");
         shoppingList.add("Pasta");
         Stream<String> shoppingListStream = shoppingList.stream();
-        shoppingListStream.sorted().map(s -> {
-            return s.toUpperCase();})
+        shoppingListStream
+                .sorted()
+                .map(s -> {return s.toUpperCase();})
                 .filter(y -> y.startsWith("P"))
-                .forEach(x -> {
-            out.println(x);
-        });
+                .forEach(x -> { out.println("Loop shoppingListStream" + " " + x); });
         // PASTA
         // Liste inserted stream object then we used stream sorted method to sort and foreach to use lambda
         // foreach to loop and lambda to write the logic
@@ -44,9 +44,28 @@ public class StreamsLiInAction {
 
         // create stream without Array or List -- self create
         Stream<String> namesStream = Stream.of("Fahd", "Yassin", "Yahya", "Yomna");
-        out.println(namesStream);
+        out.println("namesStream" + " " + namesStream);
         // java.util.stream.ReferencePipeline$Head@5305068a
         // since its object only
+
+        // shoppingList is array list i can re print it at anytime
+        // shoppingListStream is a stream and already i used forEach once and i cannot reuse it again
+        // shoppingListStream is variable created from shoppingList array list .. we don't need to do that
+        // stream variable can accept one forEach operation
+        // stream variable == one results mutable
+        // streams to operate\function a logic NOT for storing things
+        // If you want to store data .. means you want to make list has streams operations and  yuo want to save the values
+        // create new list and inject the original list to stream
+        List<String> shoppingListStreamed = shoppingList.stream()
+                .sorted()
+                .map(s -> {return s.toUpperCase();})
+                .filter(y -> y.startsWith("P"))
+                // .forEach(x -> { out.println(x); }); wont work because the original type is list
+                // and forEach return void and we need to return list
+                .collect(Collectors.toList()); // collect return list
+        out.println(shoppingListStreamed);
+        // [PASTA] filtered list 
+
 
 
     }
