@@ -1,7 +1,39 @@
 package org.electricity;
-
+import java.sql.*;
 public class Main {
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+//            DbFunctions db = new DbFunctions();
+//            db.connect_to_db();
+
+        try {
+            Class.forName("org.postgresql.Driver");
+        }
+        catch (java.lang.ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        String url = "jdbc:postgresql://lucky.db.elephantsql.com:5432/zijcdqic";
+        String username = "zijcdqic";
+        String password = "pa1RS5bN0ie3FVb3xwQ5wouC8_sPcJ4d";
+
+        try {
+            Connection db = DriverManager.getConnection(url, username, password);
+            Statement st = db.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM tax");
+            while (rs.next()) {
+                System.out.print("Column 1 returned ");
+                System.out.println(rs.getString(2));
+                System.out.print("Column 2 returned ");
+                System.out.println(rs.getString(3));
+            }
+            rs.close();
+            st.close();
+        }
+        catch (java.sql.SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
+
 }
