@@ -2,8 +2,11 @@
   <library name="postgresql-42.5.0">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/postgresql-42.5.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Electricity-Billing-System/rs2xml.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/Electricity-Billing-System/rs2xml.jar!/src" />
+    </SOURCES>
   </library>
 </component>
