@@ -2,6 +2,7 @@ package com.example.demo.student;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table
@@ -20,17 +21,20 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob;
+
+    // This annotation will make the property not getting saved to the DB
+    // age will be calculated at the getter
+    @Transient
     private Integer age;
 
     // constructor without anything
     public Student() {
     }
     // constructor all without id as the DB will generate the ID for us
-    public Student(String name, String email, LocalDate dob, Integer age) {
+    public Student(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
     }
 
 
@@ -66,8 +70,9 @@ public class Student {
         this.dob = dob;
     }
 
+    // Here we will calculate the age since its annotated by @Transient
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {

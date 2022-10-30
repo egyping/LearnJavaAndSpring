@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 
 // @Component or @Service create BEAN which accept the auto wire request to the class
@@ -44,4 +45,18 @@ public class StudentService {
     }
 
 
+    // addNewStudent check first if the email exist or not if exist return error if not save
+    //
+    public void addNewStudent(Student student) {
+        // lets first print the student came from the request
+        //system.out.println(student);
+
+        // Check if the email exist return exception if not add new student
+        // using the optional class at the repository
+        Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
+        if (studentOptional.isPresent()){
+            throw new IllegalStateException("email exist");
+        }
+        studentRepository.save(student);
+    }
 }
