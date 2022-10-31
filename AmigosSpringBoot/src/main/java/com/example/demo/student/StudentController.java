@@ -30,6 +30,7 @@ public class StudentController {
     // POST will take student data from the request and use addNewStudent to add new student
     @PostMapping
     public void registerNewStudent(@RequestBody Student student){
+
         studentService.addNewStudent(student);
     }
 

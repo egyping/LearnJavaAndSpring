@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 
+// Long since the Student primary key is ID is Long type
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 

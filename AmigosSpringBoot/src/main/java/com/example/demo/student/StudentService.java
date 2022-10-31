@@ -33,14 +33,18 @@ public class StudentService {
 //    }
 
     // using a database
+    // studentRepository ref type variable to be used in my code
+    // studentRepository created from class extend the JpaRepository which deal with the DB
 
     private final StudentRepository studentRepository;
 
+    // Constructor autowired to the repo interface
     @Autowired
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
     public List<Student> getStudents(){
+
         return studentRepository.findAll();
     }
 
@@ -53,6 +57,7 @@ public class StudentService {
 
         // Check if the email exist return exception if not add new student
         // using the optional class at the repository
+        
         Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
         if (studentOptional.isPresent()){
             throw new IllegalStateException("email exist");
