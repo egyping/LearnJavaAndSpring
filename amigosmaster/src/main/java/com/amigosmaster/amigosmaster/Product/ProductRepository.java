@@ -12,7 +12,7 @@ public class ProductRepository implements ProductRepo{
     @Override
     public List<Product> getProducts(){
         return Arrays.asList(
-                new Product(2L, 002, "Real Repository", "password")
+                new Product(2L, 002, "Real Repository", "password", "email@gmail.com")
         );
     }
 }

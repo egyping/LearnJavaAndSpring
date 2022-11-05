@@ -37,3 +37,17 @@ CommandLineRunner class used in Beans to inject any kind of commands or logic wh
 How SB serialize and deserialze the json? using Jackson
 @JsonProperty("sku_num") to rename the property in the json
 @JsonIgnore // to ignore password form showing in the json
+
+Validations
+===========
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+
+@NotBlank(message = "any message") at the properties class + @Valid at the controller method
+@Email to make sure the format is email
+javax.validation.constraints has many constraints
+@Max the max value
+@Min same
+@Decimal max min

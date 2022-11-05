@@ -1,8 +1,6 @@
 package com.amigosmaster.amigosmaster.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,5 +22,12 @@ public class ProductService {
 
     List<Product> getProducts() {
         return productRepo.getProducts();
+    }
+
+    Product getProduct(Long id) {
+        return productRepo.getProducts()
+                .stream()
+                .filter(product -> product.getId().equals(id)).findFirst()
+                .orElseThrow(() -> new IllegalStateException("Product not found"));
     }
 }

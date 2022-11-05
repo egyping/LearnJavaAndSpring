@@ -1,20 +1,30 @@
 package com.amigosmaster.amigosmaster.Product;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class Product {
     private Long id;
     private Integer sku;
+    @NotBlank
     private String title;
-    @JsonIgnore // to ignore password form showing in the json
+
+    //@JsonIgnore // to ignore password form showing in the json
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //allow write only and not read
     private final String password;
 
-    public Product(Long id, Integer sku, String title, String password) {
+    @NotBlank
+    @Email
+    private final String email;
+
+    public Product(Long id, Integer sku, String title, String password, String email) {
         this.id = id;
         this.sku = sku;
         this.title = title;
         this.password = password;
+        this.email = email;
     }
 
     public Long getId() {
@@ -56,6 +66,7 @@ public class Product {
                 ", sku=" + sku +
                 ", title='" + title + '\'' +
                 ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
