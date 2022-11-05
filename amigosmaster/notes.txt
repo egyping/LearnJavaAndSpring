@@ -35,3 +35,5 @@ CommandLineRunner class used in Beans to inject any kind of commands or logic wh
 @Configuration is used on top of the class and @Bean on the methods used
 
 How SB serialize and deserialze the json? using Jackson
+@JsonProperty("sku_num") to rename the property in the json
+@JsonIgnore // to ignore password form showing in the json

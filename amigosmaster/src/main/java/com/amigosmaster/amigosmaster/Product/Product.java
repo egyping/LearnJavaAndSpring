@@ -1,9 +1,13 @@
 package com.amigosmaster.amigosmaster.Product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Product {
     private Long id;
     private Integer sku;
     private String title;
+    @JsonIgnore // to ignore password form showing in the json
     private final String password;
 
     public Product(Long id, Integer sku, String title, String password) {
@@ -21,6 +25,7 @@ public class Product {
         this.id = id;
     }
 
+    @JsonProperty("sku_num")
     public Integer getSku() {
         return sku;
     }
