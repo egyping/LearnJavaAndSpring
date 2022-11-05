@@ -1,0 +1,37 @@
+Front end calls >> API
+Controller <> Service <> Repository
+inside the controller instintiate the service
+
+Controller to Service
+controller is a class, you define the service class as a property, now you should instintiate the
+service class property to start use it and link it, but this not needed when you use @component
+and @Autwired
+@Componenet at the service class will make it available for use in one copy and no need to create
+copies at other classes , at the other classes for example the controller you can directly inject
+the service class property in side the controller class constructor and it will be linked to the
+service class
+
+DAO and Interface (Repostiory)
+Repo interface is a class which if other clases called it has to implement the method inside
+At the service you need to refrence the repo which you will pull the data from
+at service also after pull the data you manupilated it
+Repo is a class where represent the source of data it could be data base or single or multiple new
+records of data or it could be List\Array
+Controller > Service > Interface ProductRepo >> ProductFakeRepo { new records } value = "fake"
+                                             >> ProductRepository {Collection.emptyList} value = "real"
+Two impls and single repo!! , run the appp will cause error
+you have to define @Primary or @Qualifier at the service to prior one over other
+
+@Components is the father of @Service and @Repository
+These annotations creats BEANS of the annotated class, bean is replacing the new keyword which we use to
+instintiate classes to start use it and operate
+In behind spring boot create the beans and keep it ready for use
+spring boot @Autowired helps you to inject the classes to each others through constructors
+
+@Bean annotation
+it gives you the option to predefine configuration and instruction to spring boot before instintiate the class
+usually the class named NameConfiguration
+CommandLineRunner class used in Beans to inject any kind of commands or logic while starting
+@Configuration is used on top of the class and @Bean on the methods used
+
+How SB serialize and deserialze the json? using Jackson
