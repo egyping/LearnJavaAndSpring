@@ -55,7 +55,7 @@ javax.validation.constraints has many constraints
 
 Exceptions
 ==========
-GET 127.0.0.1:8080/api/v1/product/4 and lets say 4 not exist the server will reply 500 and terminal print (java.lang.IllegalStateException: Product not found)
+=> GET 127.0.0.1:8080/api/v1/product/4 and lets say 4 not exist the server will reply 500 and terminal print (java.lang.IllegalStateException: Product not found)
 and the client postman get
 {
     "timestamp": "2022-11-06T09:32:57.329+00:00",
@@ -68,3 +68,14 @@ server.error.include-binding-errors=always
 server.error.include-message=always
 server.error.include-stacktrace=always
 These parameters at the application properties will pipe the IllegalStateException custom message to the Response
+=> 127.0.0.1:8080/api/v1/product/4 this giving 500 where it should give 404
+to do that we created new class NotFoundException extends RunTimeException and annotated by
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+now the reposnse is
+{
+    "timestamp": "2022-11-06T16:17:18.640+00:00",
+    "status": 404,
+    "error": "Not Found",
+    "message": "Product not found",
+    "path": "/api/v1/product/4"
+}

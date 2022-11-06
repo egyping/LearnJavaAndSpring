@@ -1,5 +1,6 @@
 package com.amigosmaster.amigosmaster.Product;
 
+import com.amigosmaster.amigosmaster.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class ProductService {
         return productRepo.getProducts()
                 .stream()
                 .filter(product -> product.getId().equals(id)).findFirst()
-                .orElseThrow(() -> new IllegalStateException("Product not found"));
+                // .orElseThrow(() -> new IllegalStateException("Product not found"));
+                .orElseThrow(() -> new NotFoundException("Product not found"));
     }
 }
