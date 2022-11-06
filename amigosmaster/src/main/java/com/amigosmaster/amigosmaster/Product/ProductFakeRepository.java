@@ -12,8 +12,9 @@ public class ProductFakeRepository implements ProductRepo{
     @Override
     public List<Product> getProducts() {
     return Arrays.asList(
-            new Product(2L, 002, "Fake Product 2", "password", "email@gmail.com"),
-            new Product(4L, 004, "Fake Product 4", "password", "email@gmail.com")
+            new Product(1L, 001, "Fake Product 1", "password", "email_1@gmail.com"),
+            new Product(2L, 002, "Fake Product 2", "password", "email_2@gmail.com"),
+            new Product(3L, 003, "Fake Product 3", "password", "email_3@gmail.com")
             );
     }
 }

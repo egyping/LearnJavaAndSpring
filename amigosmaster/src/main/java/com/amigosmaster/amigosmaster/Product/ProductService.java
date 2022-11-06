@@ -20,10 +20,13 @@ public class ProductService {
         this.productRepo = productRepo;
     }
 
+    // Method to list all the products
     List<Product> getProducts() {
+
         return productRepo.getProducts();
     }
 
+    // Method to get one product
     Product getProduct(Long id) {
         return productRepo.getProducts()
                 .stream()
