@@ -2,10 +2,12 @@ package com.amigosmaster.amigosmaster.Product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class Product {
+    @Id
     private Long id;
     private Integer sku;
     @NotBlank

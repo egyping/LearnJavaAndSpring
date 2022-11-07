@@ -28,15 +28,22 @@ public class ProductConfiguration {
     // productRepo method will use the value and pass it to the service to determine in using
     // the Fake or the Real (FakeRepo or Repository
     // @Bean must exist as it has to run while app starting to determine
+//    @Bean
+//    ProductRepo productRepo(){
+//        System.out.println("Use the Fake Repo?:"+ " " + useFakeRepo);
+//        return useFakeRepo ?
+//                // if there is value to useFakeRepo and True use the Fake otherwise use the Repository
+//                // disable the qualifier and this method will initiate based on config
+//                new ProductFakeRepository() :
+//                new ProductRepository();
+//        // to change the value to true go to app config  > program arguments
+//        // --app.useFakeRepo=true
+//    }
+
+    // same above after introducing the productRepository connected to the JPA
     @Bean
     ProductRepo productRepo(){
         System.out.println("Use the Fake Repo?:"+ " " + useFakeRepo);
-        return useFakeRepo ?
-                // if there is value to useFakeRepo and True use the Fake otherwise use the Repository
-                // disable the qualifier and this method will initiate based on config
-                new ProductFakeRepository() :
-                new ProductRepository();
-        // to change the value to true go to app config  > program arguments
-        // --app.useFakeRepo=true
+        return new ProductFakeRepository();
     }
 }

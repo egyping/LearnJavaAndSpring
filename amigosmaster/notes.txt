@@ -79,3 +79,61 @@ now the reposnse is
     "message": "Product not found",
     "path": "/api/v1/product/4"
 }
+
+
+Data and JPA
+============
+H2 is in memory database good for practicing
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <scope>runtime</scope>
+</dependency>
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.show-sql=true
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+Reload the project and access H2 from http://127.0.0.1:8080/h2
+URL jdbc:h2:mem:testdb
+@Entity and @Table annotations to tag the original class
+ProductRepository class should extends JpaRepository to use its features and driver ...etc.
+@Id annotation for the id field of the persistence class since its the PK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
