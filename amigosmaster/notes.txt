@@ -101,11 +101,20 @@ spring.h2.console.path=/h2
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
+@Entity and @Table annotations to tag the original class
+@Id annotation for the id field of the persistence class since its the PK
+create empty constructor for the persistence main class
+    public Product() {
+        }
+ProductRepository class should extends JpaRepository to use its features and driver ...etc.
+ProductRepository should tagged by @Repository
 Reload the project and access H2 from http://127.0.0.1:8080/h2
 URL jdbc:h2:mem:testdb
-@Entity and @Table annotations to tag the original class
-ProductRepository class should extends JpaRepository to use its features and driver ...etc.
-@Id annotation for the id field of the persistence class since its the PK
+
+
+
+
+
 
 
 

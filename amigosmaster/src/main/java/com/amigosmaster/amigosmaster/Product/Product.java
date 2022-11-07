@@ -2,10 +2,14 @@ package com.amigosmaster.amigosmaster.Product;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table
 public class Product {
     @Id
     private Long id;
@@ -15,11 +19,11 @@ public class Product {
 
     //@JsonIgnore // to ignore password form showing in the json
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) //allow write only and not read
-    private final String password;
+    private String password;
 
     @NotBlank
     @Email
-    private final String email;
+    private String email;
 
     public Product(Long id, Integer sku, String title, String password, String email) {
         this.id = id;
@@ -27,6 +31,11 @@ public class Product {
         this.title = title;
         this.password = password;
         this.email = email;
+    }
+
+    // empty contructor to avoid the error
+    //  "message": "No default constructor for entity:
+    public Product() {
     }
 
     public Long getId() {

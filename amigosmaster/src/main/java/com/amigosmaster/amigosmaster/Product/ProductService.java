@@ -44,10 +44,7 @@ public class ProductService {
 
 
     Product getProduct(Long id) {
-        return productRepository.findAll()
-                .stream()
-                .filter(product -> product.getId().equals(id)).findFirst()
-                // .orElseThrow(() -> new IllegalStateException("Product not found"));
+        return productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Product not found"));
     }
 }

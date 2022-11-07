@@ -8,7 +8,7 @@ import java.util.List;
 
 
 // Connecting to H2 database via JPA
-
+@Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     // This class will be used for connecting to the DB
 
