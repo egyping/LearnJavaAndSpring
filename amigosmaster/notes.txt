@@ -112,6 +112,30 @@ Reload the project and access H2 from http://127.0.0.1:8080/h2
 URL jdbc:h2:mem:testdb
 
 
+Open Feign
+==========
+--need to install spring cloud and Open Feign
+2021.0.x since the spring version is 2.7
+<properties>
+    <spring.cloud-version>2021.0.x</spring.cloud-version>
+</properties>
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring.cloud-version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+So basically you need client class annotated by @Restcontroller and @EnableFeignClients
+This class has the get methods which will
+
+
+
+
 
 
 
