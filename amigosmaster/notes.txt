@@ -134,6 +134,12 @@ So basically you need client class annotated by @Restcontroller and @EnableFeign
 This class has the get methods which will
 
 
+Logging
+=======
+First you will need to instintiate variable from Logger class
+private final static Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
+then use LOGGER methods at any method to throw log or error
+
 
 
 

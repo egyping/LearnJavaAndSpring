@@ -1,8 +1,12 @@
 package com.amigosmaster.amigosmaster.Product;
 
 import com.amigosmaster.amigosmaster.exception.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import org.apache.logging.log4j.LogManager;
 
 import java.util.List;
 
@@ -19,6 +23,10 @@ public class ProductService {
     // point to the actual REPO interface which connect to JPA ProductRepository
     private final ProductRepository productRepository;
 
+    // Logger var to be used at any method
+    private final static Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
+    // private final static Logger LOGGER = (Logger) LogManager.getLogger(ProductService.class);
+
     @Autowired
     public ProductService(
             // @Qualifier("real")
@@ -31,7 +39,10 @@ public class ProductService {
 //    }
 
     // Method to list the products from the JPA interface we use findAll
-    List<Product> getProducts() {return productRepository.findAll();
+    List<Product> getProducts() {
+        // log when the method executed
+        LOGGER.info("getProducts was called");
+        return productRepository.findAll();
     }
 
     // Method to get one product from productRepo when it was not DB
@@ -45,6 +56,12 @@ public class ProductService {
 
     Product getProduct(Long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Product not found"));
+                // if not exist throw this error and log it
+                .orElseThrow(() -> {
+                    NotFoundException notFoundException = new NotFoundException("Product with ID {} "+ id + "Not Found");
+                    LOGGER.error("Get Product was called and product with ID {} not found "+id,
+                                notFoundException);
+                    return notFoundException;
+                });
     }
 }
