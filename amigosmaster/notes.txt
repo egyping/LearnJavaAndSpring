@@ -149,8 +149,23 @@ Setup
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-actuator</artifactId>
 </dependency>
+#Info section
+info.app.name=Learn spring projects chain
+info.app.description=Learn Spring boot
+info.app.version=1.0.0
+info.company.name=Fahd Mannaa
+#Actuator
+management.endpoints.jmx.exposure.include=health,info,env,beans
+management.endpoints.web.exposure.include=health,info,env,beans
+management.info.env.enabled=true
+
 Reload
 http://127.0.0.1:8080/actuator
+now at the console when start the app
+2022-11-10 08:17:26.018  INFO 2279 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 4 endpoint(s) beneath base path '/actuator'
+
+
+
 
 
 
