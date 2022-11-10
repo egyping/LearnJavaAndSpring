@@ -141,6 +141,19 @@ private final static Logger LOGGER = LoggerFactory.getLogger(ProductService.clas
 then use LOGGER methods at any method to throw log or error
 
 
+Actuator
+========
+Great tool for monitoring
+Setup
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+Reload
+http://127.0.0.1:8080/actuator
+
+
+
 
 
 
