@@ -156,13 +156,100 @@ info.app.version=1.0.0
 info.company.name=Fahd Mannaa
 #Actuator
 management.endpoints.jmx.exposure.include=health,info,env,beans
-management.endpoints.web.exposure.include=health,info,env,beans
+management.endpoints.web.exposure.include=*
 management.info.env.enabled=true
+management.endpoint.health.show-details=always
 
 Reload
 http://127.0.0.1:8080/actuator
 now at the console when start the app
-2022-11-10 08:17:26.018  INFO 2279 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 4 endpoint(s) beneath base path '/actuator'
+2022-11-10 08:17:26.018  INFO 2279 --- [           main] o.s.b.a.e.w.EndpointLinksResolver        : Exposing 15 endpoint(s) beneath base path '/actuator'
+
+
+
+Application properties general notes
+====================================
+-- How to get value from application property to your code
+// At your class you can call value from application.properties
+// a.p info.company.name=Fahd Mannaa
+@Value("${info.company.name}")
+private String companyName;
+System.out.println(companyName);
+Above will print Fahd Mannaa when the sout called
+
+-- Getting value from application properties and map it to clsss
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
+create a class has the exact properties you want from the a.p
+annotate the class
+@Configuration
+@ConfigurationProperties(prefix = "info.app")
+at any other method you can call the InfoApp class and use infoApp variable to access
+the InfoApp properties and of course the application properties values
+usefull for gettin the DB user name for example to the code
+
+
+Spring Profiles
+===============
+Using multiple a.p to have two different or more environments
+the a.p file copy and paster with name application-dev.properties
+and at app configuration add program param
+--spring.profiles.active=dev
+
+
+Convert a.p to yaml
+===================
+to convert your s.p file to yaml use this plugin
+Convert YAML and Properties File
+easily click right the a.p file and convert to yml
+
+
+
+Package
+=======
+remove the target folder first
+from the menu click maven then install this will clean up, run test, validate ..etc.
+and at the end will create the .jar file
+same we can do from the command line
+remove the target folder first
+./mvnw clean install
+the output is the target folder again but it has the .jar file
+er/target/projectname-0.0.1-SNAPSHOT.jar
+and to run the jar file
+java -jar projectname-0.0.1-SNAPSHOT.jar
+and to mention the exact profile
+java -jar amigosmaster-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+to have two instances running at the same time
+java -jar amigosmaster-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev --server.port=3000
+run with dockerr
+First create the image but make sure first that docker installed
+./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=springio/gs-spring-boot-docker
+Second to run the docker image
+docker run -p 8080:8080 -t springio/gs-spring-boot-docker
+
+
+
+Lombok
+======
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+</dependency>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

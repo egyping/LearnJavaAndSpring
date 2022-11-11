@@ -1,5 +1,8 @@
 package com.amigosmaster.amigosmaster.Product;
 
+import com.amigosmaster.amigosmaster.infoapp.InfoApp;
+import org.hibernate.cfg.Environment;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +19,18 @@ public class ProductConfiguration {
     @Value("${app.useFakeRepo:false}")
     private Boolean useFakeRepo;
 
-     // to run commands while starting the app
+    // calling value from application.properties
+    @Value("${info.company.name}")
+    private String companyName;
+
+
+    // to run commands while starting the app
     @Bean
-    CommandLineRunner commandLineRunner (){
+    CommandLineRunner commandLineRunner (InfoApp infoApp){
         return args ->{
             System.out.println("Bean commandLineRunner initiated");
+            System.out.println(companyName);
+            System.out.println(infoApp);
         };
     }
 
