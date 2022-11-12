@@ -1,1 +1,19 @@
 Project and task management application
+
+How to get Class B in Class A
+
+(1)
+public class A {
+    private B bClass;
+    public A() {
+    bClass = new B();
+        }
+}
+(2)
+public class A {
+    private B b;
+    public A(B bDependency) {
+    this.b = bDependency;
+        }
+}
+(3)
