@@ -1,19 +1,19 @@
 Project and task management application
 
-How to get Class B in Class A
+ -- How Class A take access to Class B
 
-(1)
+(1) Class A create it in the constructor
 public class A {
     private B bClass;
     public A() {
     bClass = new B();
         }
 }
-(2)
+(2) someone out of A create it and pass it to A
+and this is what spring take care of it
 public class A {
     private B b;
     public A(B bDependency) {
     this.b = bDependency;
         }
 }
-(3)

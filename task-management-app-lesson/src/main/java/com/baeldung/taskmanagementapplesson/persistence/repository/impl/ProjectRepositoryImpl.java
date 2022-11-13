@@ -18,6 +18,7 @@ public class ProjectRepositoryImpl implements IProjectRepository {
         super();
     }
 
+    // find project by ID
     @Override
     public Optional<Project> findById(Long id) {
         return projects.stream()
@@ -25,6 +26,7 @@ public class ProjectRepositoryImpl implements IProjectRepository {
                 .findFirst();
     }
 
+    // Save new one if not exist OR delete the current one and create new if exist
     @Override
     public Project save(Project project) {
         Project existingProject = findById(project.getId()).orElse(null);
