@@ -17,3 +17,8 @@ public class A {
     this.b = bDependency;
         }
 }
+
+-- @Component annotation needed to make spring scan the annotated class
+-- @SpringBootApplication(basePackages = "package name ") this will limit the scan to specific package
+-- @Component include @Repository and @Service nothing different names fit better
+--

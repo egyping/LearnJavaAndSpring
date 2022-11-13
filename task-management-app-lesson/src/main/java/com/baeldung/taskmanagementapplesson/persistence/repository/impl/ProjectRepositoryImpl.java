@@ -4,12 +4,14 @@ import com.baeldung.taskmanagementapplesson.persistence.model.Project;
 import com.baeldung.taskmanagementapplesson.persistence.repository.IProjectRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+//@Component
+@Repository
 public class ProjectRepositoryImpl implements IProjectRepository {
 
     private List<Project> projects = new ArrayList<>();

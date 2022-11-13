@@ -4,9 +4,12 @@ import com.baeldung.taskmanagementapplesson.persistence.model.Project;
 import com.baeldung.taskmanagementapplesson.persistence.repository.IProjectRepository;
 import com.baeldung.taskmanagementapplesson.service.IProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
+@Service
 public class ProjectServiceImpl implements IProjectService {
 
     @Autowired
