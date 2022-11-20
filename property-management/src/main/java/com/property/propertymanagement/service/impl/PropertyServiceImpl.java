@@ -76,4 +76,44 @@ public class PropertyServiceImpl implements PropertyService {
         }
         return dto;
     }
+
+    // update only description
+    @Override
+    public PropertyDTO updatePropertyDescription(PropertyDTO propertyDTO, Long propertyId) {
+        // find by id in the db and assign the row data to optEn
+        Optional<PropertyEntity> optEn =  propertyRepository.findById(propertyId);
+        // create empty dto to update it later
+        PropertyDTO dto = null;
+        if(optEn.isPresent()){
+            // get the entire row from the DB and assign it to pe
+            PropertyEntity pe = optEn.get();
+            // update the pe description by the data coming from the dto
+            pe.setDescription(propertyDTO.getDescription());
+            // convert entity to dto so we can respond back to the controller
+            dto = propertyConverter.convertEntityToDTO(pe);
+            // save entity pe to the db
+            propertyRepository.save(pe);
+        }
+        return dto;
+    }
+
+    @Override
+    public PropertyDTO updatePropertyPrice(PropertyDTO propertyDTO, Long propertyId) {
+        Optional<PropertyEntity> optEn =  propertyRepository.findById(propertyId);
+        PropertyDTO dto = null;
+        if(optEn.isPresent()){
+            PropertyEntity pe = optEn.get();//data from database
+            pe.setPrice(propertyDTO.getPrice());
+            dto = propertyConverter.convertEntityToDTO(pe);
+            propertyRepository.save(pe);
+        }
+        return dto;
+    }
+
+    @Override
+    public void deleteProperty(Long propertyId) {
+        propertyRepository.deleteById(propertyId);
+    }
+
+
 }

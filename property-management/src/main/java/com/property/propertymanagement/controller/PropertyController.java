@@ -48,6 +48,7 @@ public class PropertyController {
         return responseEntity;
     }
 
+    // Update property
     @PutMapping("/properties/{propertyId}")
     public ResponseEntity<PropertyDTO> updateProperty(
             @RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
@@ -58,4 +59,25 @@ public class PropertyController {
         return responseEntity;
     }
 
+    @PatchMapping("/properties/update-description/{propertyId}")
+    public ResponseEntity<PropertyDTO> updatePropertyDescription(
+            @RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
+        propertyDTO = propertyService.updatePropertyDescription(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> responseEntity = new ResponseEntity<>(propertyDTO, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @PatchMapping("/properties/update-price/{propertyId}")
+    public ResponseEntity<PropertyDTO> updatePropertyPrice(@RequestBody PropertyDTO propertyDTO, @PathVariable Long propertyId){
+        propertyDTO = propertyService.updatePropertyPrice(propertyDTO, propertyId);
+        ResponseEntity<PropertyDTO> responseEntity = new ResponseEntity<>(propertyDTO, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @DeleteMapping("/properties/{propertyId}")
+    public ResponseEntity deleteProperty(@PathVariable Long propertyId){
+        propertyService.deleteProperty(propertyId);
+        ResponseEntity<Void> responseEntity = new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+        return responseEntity;
+    }
 }

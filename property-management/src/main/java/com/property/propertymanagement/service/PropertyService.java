@@ -15,4 +15,10 @@ public interface PropertyService {
     // update property , type which will be returned and operated is PropertyDTO
     // her we have to pass the id and id type
     PropertyDTO updateProperty(PropertyDTO propertyDTO, Long propertyId);
+
+    PropertyDTO updatePropertyDescription(PropertyDTO propertyDTO, Long propertyId);
+
+    PropertyDTO updatePropertyPrice(PropertyDTO propertyDTO, Long propertyId);
+
+    void deleteProperty(Long propertyId);
 }
