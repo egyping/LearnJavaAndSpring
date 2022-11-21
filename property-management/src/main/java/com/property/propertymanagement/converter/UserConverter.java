@@ -11,24 +11,21 @@ import org.springframework.stereotype.Component;
 public class UserConverter {
 
     public UserEntity convertDTOtoEntity(UserDTO userDTO){
-
-        UserEntity userEnt = new UserEntity();
-        user.setPhone(userDTO.getPhone());
-        user.setPassword(userDTO.getPassword());
-        user.setOwnerEmail(userDTO.getOwnerEmail());
-        user.setOwnerName(userDTO.getOwnerName());
-
-        return user;
+        UserEntity userEntity = new UserEntity();
+        userEntity.setOwnerEmail(userDTO.getOwnerEmail());
+        userEntity.setOwnerName(userDTO.getOwnerName());
+        userEntity.setPassword(userDTO.getPassword());
+        userEntity.setPhone(userDTO.getPhone());
+        return userEntity;
     }
 
-    public UserDTO convertEntityToDTO(UserEntity userEntity){
-        UserDTO propertyDTO =  new UserDTO();
-        UserDTO.setId(propertyEntity.getId());
-        UserDTO.setTitle(propertyEntity.getTitle());
-        UserDTO.setAddress(propertyEntity.getAddress());
-        UserDTO.setPrice(propertyEntity.getPrice());
-        UserDTO.setDescription(propertyEntity.getDescription());
 
+    public UserDTO convertEntityToDTO(UserEntity userEntity){
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(userEntity.getId());
+        userDTO.setOwnerEmail(userEntity.getOwnerEmail());
+        userDTO.setOwnerName(userEntity.getOwnerName());
+        userDTO.setPhone(userEntity.getPhone());
         return userDTO;
     }
 
