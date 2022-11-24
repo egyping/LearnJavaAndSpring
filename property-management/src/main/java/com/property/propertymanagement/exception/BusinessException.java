@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BusinessException extends Exception{
+public class BusinessException extends RuntimeException{
 
-    return List<ErrorModel> errors;
+    private List<ErrorModel> errors;
 
     public BusinessException(List<ErrorModel> errors) {
         this.errors = errors;

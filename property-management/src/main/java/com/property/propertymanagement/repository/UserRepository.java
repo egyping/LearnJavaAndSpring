@@ -14,4 +14,7 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
     // the method name must start with findBy followed by the two conditions
     Optional<UserEntity> findByOwnerEmailAndPassword(String email, String password);
 
+    // to check if the mail exist or not
+    Optional<UserEntity> findByOwnerEmail(String email);
+
 }

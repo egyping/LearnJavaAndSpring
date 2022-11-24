@@ -26,8 +26,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO register(UserDTO userDTO) {
+        // check with the repo if the email exist or not
+        Optional<UserEntity> optUe = userRepository.findByOwnerEmail(userDTO.getOwnerEmail());
+        if(optUe.isPresent()){
+            // use the error model and business exception to return exception
+            List<ErrorModel> errorModelList = new ArrayList<>();
+            ErrorModel errorModel = new ErrorModel();
+            errorModel.setCode("EMAIL_ALREADY_EXIST");
+            errorModel.setMessage("The Email With Which You Are Trying To Register Already Exist!");
+            errorModelList.add(errorModel);
+            throw new BusinessException(errorModelList);
+        }
+
         UserEntity userEntity = userConverter.convertDTOtoEntity(userDTO);
-        userEntity =  userRepository.save(userEntity);
+        userEntity = userRepository.save(userEntity);
+
+//        AddressEntity addressEntity = new AddressEntity();
+//        addressEntity.setHouseNo(userDTO.getHouseNo());
+//        addressEntity.setCity(userDTO.getCity());
+//        addressEntity.setPostalCode(userDTO.getPostalCode());
+//        addressEntity.setStreet(userDTO.getStreet());
+//        addressEntity.setCountry(userDTO.getCountry());
+//        addressEntity.setUserEntity(userEntity);
+        //addressRepository.save(addressEntity);
+
         userDTO = userConverter.convertEntityToDTO(userEntity);
         return userDTO;
     }
@@ -39,13 +61,17 @@ public class UserServiceImpl implements UserService {
         if (optionalUserEntity.isPresent()){
             userDTO = userConverter.convertEntityToDTO(optionalUserEntity.get());
         }else{
-
+            // new errors list created from the error model
             List<ErrorModel> errorModelList = new ArrayList<>();
+            // create one error model because if the login fail its only one error
             ErrorModel errorModel = new ErrorModel();
+            // set error code to Invalid Login
             errorModel.setCode("INVALID_LOGIN");
+            // set message to this message
             errorModel.setMessage("Incorrect Email or Password");
+            // add the single error to the list of errors created at first step
             errorModelList.add(errorModel);
-
+            // throw the error in case of else
             throw new BusinessException(errorModelList);
         }
         return userDTO;
